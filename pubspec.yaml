@@ -1,0 +1,48 @@
+name: marble
+description: "With this app, users can quickly find real estate for rent and purchase."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.3 <4.0.0'
+
+dependencies:
+  go_router:
+  flutter_svg:
+  cached_network_image:
+  flutter:
+    sdk: flutter
+
+
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+  fonts:
+    - family: NunitoSans
+      fonts:
+        - asset: assets/fonts/NunitoSans/NunitoSans_7pt-Black.ttf
+          weight: 900
+        - asset: assets/fonts/NunitoSans/NunitoSans_7pt-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/NunitoSans/NunitoSans_7pt-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/NunitoSans/NunitoSans_7pt-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/NunitoSans/NunitoSans_7pt-Bold.ttf
+          weight: 500
+        - asset: assets/fonts/NunitoSans/NunitoSans_7pt-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/NunitoSans/NunitoSans_7pt-Light.ttf
+          weight: 300
+        - asset: assets/fonts/NunitoSans/NunitoSans_7pt-ExtraLight.ttf
+          weight: 200
