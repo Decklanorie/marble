@@ -12,6 +12,8 @@ class MarbleColors {
   static const Color black3 = Color(0xC0000000);
   static const Color white = Color(0xFFFFFFFF);
   static const Color deemWhite = Color(0xFFF8F8F8);
+  static const Color deemGrey = Color(0xA8A9A9A9);
+  static const Color lessDeemGrey = Color(0xFC838383);
 
 
 }

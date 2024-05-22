@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marble/src/core/utils/size_utils.dart';
@@ -9,7 +11,6 @@ import '../shared/widgets/bottom_nav_item.dart';
 
 class ScaffoldWithNavbar extends StatefulWidget {
    ScaffoldWithNavbar(this.navigationShell, {super.key});
-  int index = 2;
    StatefulNavigationShell navigationShell;
 
    @override
@@ -18,6 +19,12 @@ class ScaffoldWithNavbar extends StatefulWidget {
 
 class _ScaffoldWithNavbarState extends State<ScaffoldWithNavbar> with TickerProviderStateMixin {
   int index = 0;
+  bool showBN = false;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,47 +33,58 @@ class _ScaffoldWithNavbarState extends State<ScaffoldWithNavbar> with TickerProv
       body: Stack(
           children:[
             widget.navigationShell,
-            Positioned(
-              bottom: 30,
+           Positioned(
+              bottom: 0,
               child: Container(
                 width: fwidth(context),
-                child: Center(
-                  child: Container(
-                    height: 55,
+                child: Container(
+                    height: 55+(fheight(context)*.03),
                     width: 260,
-                    decoration: BoxDecoration(
-                      color: MarbleColors.black,
-                      borderRadius: BorderRadius.circular(10000),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        BottomNavItem(index:1,isActive: index==1, onTap:(){
-                          widget.navigationShell.goBranch(
-                            1,
-                            initialLocation: 1 == widget.navigationShell.currentIndex,
+                    child:ClipRect(
+                      child: TweenAnimationBuilder(
+                        curve: Curves.slowMiddle,
+                        tween: Tween<Offset>(begin: Offset(0, 303), end: Offset(0, 0)),
+                        duration: Duration(milliseconds: 3700),
+                        builder: (context, Offset offset, child) {
+                          return Transform.translate(
+                            offset: offset,
+                            child: Center(
+                              child: Container(
+                                height: 55,
+                                width: 260,
+                                margin: EdgeInsets.only(bottom: fheight(context)*.03),
+                                decoration: BoxDecoration(
+                                  color: MarbleColors.black,
+                                  borderRadius: BorderRadius.circular(10000),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: [
+                                    BottomNavItem(index:1,isActive: index==1, onTap:(){
+                                      context.pushReplacement('/map');
+                                    }, icon:MarbleAssets.search, reverseTap:(){
+                                      setState(() {
+                                        index=1;
+                                      });
+                                    }),
+                                    BottomNavItem(index:2,isActive: false, onTap:(){}, icon:MarbleAssets.message),
+                                    BottomNavItem(index:0,isActive: index==0, onTap:(){
+                                      context.pushReplacement('/home');
+                                    }, icon:MarbleAssets.house,reverseTap:(){
+                                      setState(() {
+                                        index=0;
+                                      });
+                                    }),
+                                    BottomNavItem(index:3,isActive: false, onTap:(){}, icon:MarbleAssets.likey),
+                                    BottomNavItem(index:4,isActive: false, onTap:(){}, icon:MarbleAssets.person),
+                                  ],
+                                ),
+                              ),
+                            ),
                           );
-                        }, icon:MarbleAssets.search, reverseTap:(){
-                          setState(() {
-                            index=1;
-                          });
-                        }),
-                        BottomNavItem(index:2,isActive: false, onTap:(){}, icon:MarbleAssets.message),
-                        BottomNavItem(index:0,isActive: index==0, onTap:(){
-                          widget.navigationShell.goBranch(
-                            0,
-                            initialLocation: 0 == widget.navigationShell.currentIndex,
-                          );
-                        }, icon:MarbleAssets.house,reverseTap:(){
-                          setState(() {
-                            index=0;
-                          });
-                        }),
-                        BottomNavItem(index:3,isActive: false, onTap:(){}, icon:MarbleAssets.likey),
-                        BottomNavItem(index:4,isActive: false, onTap:(){}, icon:MarbleAssets.person),
-                      ],
-                    ),
-                  ),
+                        },
+                      ),
+                    )
                 ),
               )
             )

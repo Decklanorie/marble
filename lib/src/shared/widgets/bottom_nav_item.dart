@@ -7,6 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:marble/src/res/colors.dart';
 
 import '../../res/assets/app_assets.dart';
+import '../radar_painters.dart';
 
 class BottomNavItem extends StatefulWidget {
    BottomNavItem({super.key, required this.onTap, required this.icon, required this.index,
@@ -99,7 +100,7 @@ class _BottomNavItemState extends State<BottomNavItem> {
                   if(widget.index==0){
                     if(Platform.isAndroid){
                       SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-                        systemNavigationBarColor: MarbleColors.white,
+                        systemNavigationBarColor: MarbleColors.deemOrange,
                         statusBarIconBrightness: Brightness.dark,
                         systemNavigationBarIconBrightness: Brightness.dark,
                       ));
@@ -157,9 +158,6 @@ class _BottomNavItemState extends State<BottomNavItem> {
       ),
       onTap: (){
         widget.reverseTap?.call();
-        print(widget.isActive);
-        print(step2);
-        print(step3);
         if(step2){
           setState(() {
             step2=false;
@@ -171,52 +169,3 @@ class _BottomNavItemState extends State<BottomNavItem> {
   }
 }
 
-class RadarPainter extends CustomPainter {
-  final double scale;
-
-  RadarPainter(this.scale);
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final Paint paint = Paint()
-      ..color = MarbleColors.white
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 7.0;
-
-    final center = Offset(size.width / 2, size.height / 2);
-    final maxRadius = size.width / 2.6;
-
-    final radius = maxRadius * (scale);
-    canvas.drawCircle(center, radius, paint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return true;
-  }
-}
-
-class RadarPainter2 extends CustomPainter {
-  final double scale;
-
-  RadarPainter2(this.scale);
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final Paint paint = Paint()
-      ..color = MarbleColors.white
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1.0;
-
-    final center = Offset(size.width / 2, size.height / 2);
-    final maxRadius = size.width / 2;
-
-    final radius = maxRadius * (scale);
-    canvas.drawCircle(center, radius, paint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return true;
-  }
-}

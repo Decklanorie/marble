@@ -11,13 +11,15 @@ void main() {
   if(Platform.isAndroid){
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: MarbleColors.transparent,
-      systemNavigationBarColor: MarbleColors.white,
+      systemNavigationBarColor: MarbleColors.deemOrange,
       statusBarIconBrightness: Brightness.dark,
       systemNavigationBarIconBrightness: Brightness.dark,
     ));
   }
-  runApp(const MyApp());
-}
+
+    runApp(const MyApp());
+
+  }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

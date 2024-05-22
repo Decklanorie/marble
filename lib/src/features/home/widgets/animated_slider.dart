@@ -42,7 +42,7 @@ class _AnimatedSliderButtonState extends State<AnimatedSliderButton> with Ticker
         });
         animation2.animate(AnimationController(duration: Duration(milliseconds: 400), vsync: this));
       });
-      animation.animate(AnimationController(duration: Duration(milliseconds: 800), vsync: this));
+      animation.animate(AnimationController(duration: Duration(milliseconds: 600), vsync: this));
     });
     super.initState();
   }
@@ -87,7 +87,7 @@ class _AnimatedSliderButtonState extends State<AnimatedSliderButton> with Ticker
             )):
     TweenAnimationBuilder(
       tween: animation,
-      duration: Duration(milliseconds: 800),
+      duration: Duration(milliseconds: 600),
       builder: (context, double value, child) =>
           Container(
               height: widget.small?40:48,
@@ -112,7 +112,7 @@ class _AnimatedSliderButtonState extends State<AnimatedSliderButton> with Ticker
                         if(animationHasEnded)Flexible(
                             child:TweenAnimationBuilder(
                           tween: animation4,
-                          duration: Duration(milliseconds: 500),
+                          duration: Duration(milliseconds: 300),
                           builder: (context, double value, child) =>
                               Opacity(opacity: value<=0.5?0:value,
                                 child:  MText(text: widget.title,style: MarbleTypography.normalTextStyle.copyWith(

@@ -16,4 +16,17 @@ class MarbleAssets {
   static const love = 'assets/images/love.svg';
   static const person = 'assets/images/person.svg';
   static const filter = 'assets/images/filter.svg';
+  static const map = 'assets/images/map.jpeg';
+  static const blackMap = 'assets/images/blackmap.jpg';
+  static const hotel = 'assets/images/hotel.svg';
+  static const hotel2 = 'assets/images/hotel2.svg';
+  static const hotel3 = 'assets/images/hotel3.svg';
+  static const hotel4 = 'assets/images/hotel4.svg';
+  static const align = 'assets/images/align.svg';
+  static const direction = 'assets/images/direction.svg';
+  static const direction2 = 'assets/images/direction2.svg';
+  static const layer = 'assets/images/layer.svg';
+  static const shield = 'assets/images/shield.svg';
+  static const wallet = 'assets/images/wallet.svg';
+  static const bin = 'assets/images/bin.svg';
 }
